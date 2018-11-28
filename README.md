@@ -12,4 +12,4 @@ On va considérer quatre manières de représenter une image en couleur et donc 
 ## Membres du projet
 
 - DU, Quoc Anh, Imaginary Gift
-- BONUGLI, Yoan, Imaginary Gift
+- BONUGLI, Yoan, Imaginary Gift 
