@@ -19,7 +19,7 @@ public class RasterUniformImageFactory {
         this.rasterImageType = rasterImageType;
     }
 
-    @Override
+
     public Image makeImage() {
         Color[][] colors = new Color[width][height];
 
