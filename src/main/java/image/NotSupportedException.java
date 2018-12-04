@@ -1,9 +1,13 @@
 package image;
 
 public class NotSupportedException extends RuntimeException{
+    private String message ;
 
-    public NotSupportedException(){
-        System.out.println("Not Supported Exception !");
+    public NotSupportedException(String message){
+        this.message = message ;
     }
 
+    public String getMessage(){
+        return "Error " + message ;
+    }
 }
