@@ -2,37 +2,28 @@ package image;
 
 import java.awt.*;
 
-public class RasterUniformImageFactory {
+public class RasterUniformImageFactory implements ImageFactory {
     private int width;
     private int height;
-    private Color leftColor;
-    private Color middleColor;
-    private Color rightColor;
+    private Color color;
     private RasterImageType rasterImageType;
 
-    public RasterUniformImageFactory(int width, int height, Color leftColor, Color middleColor, Color rightColor, RasterImageType rasterImageType) {
+    public RasterUniformImageFactory(int width, int height, Color color, RasterImageType rasterImageType) {
         this.width = width;
         this.height = height;
-        this.leftColor = leftColor;
-        this.middleColor = middleColor;
-        this.rightColor = rightColor;
+        this.color = color;
         this.rasterImageType = rasterImageType;
     }
 
-
+    @Override
     public Image makeImage() {
-        Color[][] colors = new Color[width][height];
-
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
-                colors[x][y] = (x < width / 3) ? leftColor : ((x > 2 * width / 3) ? rightColor : middleColor);
-            }
-        }
-        switch (rasterImageType){
+        switch (rasterImageType) {
             case BRUTE:
-                return new BruteRasterImage(colors);
+                return new BruteRasterImage(color, width, height);
             default:
                 throw new NotSupportedException(rasterImageType + " is not supported");
         }
     }
 }
+
+

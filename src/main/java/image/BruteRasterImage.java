@@ -1,8 +1,5 @@
 package image;
 
-
-import util.Matrices;
-
 import java.awt.*;
 
 public class BruteRasterImage implements Image {
@@ -14,30 +11,27 @@ public class BruteRasterImage implements Image {
 
     public BruteRasterImage(Color color, int width, int height){
 
-        this.width=width;
-        this.height=height;
-        pixels=new Color[width][height];
+        this.width = width;
+        this.height = height;
+        pixels = new Color[width][height];
         setPixelsColor(color);
     }
 
 
 
     public BruteRasterImage(Color[][] colors){
-        Matrices.requiresNonNull(colors);
-        Matrices.requiresNonZeroDimensions(colors);
-        Matrices.requiresRectangularMatrix(colors);
-
-        for(int x = 0 ; x < Matrices.getRowCount(colors) ; x++){
-            for(int y = 0 ; y < Matrices.getColumnCount(colors) ; y++){
-                this.pixels[x][y] = colors[x][y];
+        //initialiser pixels
+        pixels = new Color[this.width][this.height];
+        for(int x = 0; x < this.width; x++){
+            for(int y = 0; y < this.height; y++){
+                pixels[x][y] = colors[x][y];
             }
         }
-
     }
 
 
     public void createRepresentation(){
-        this.pixels = new Color[width][height] ;
+        this.pixels = new Color[this.width][this.height];
     }
 
     public void setPixelColor(Color color, int x, int y){
@@ -46,6 +40,7 @@ public class BruteRasterImage implements Image {
 
     @Override
     public Color getPixelColor(int x, int y) {
+
         return this.pixels[x][y];
     }
 
@@ -69,11 +64,13 @@ public class BruteRasterImage implements Image {
 
     @Override
     public int getWidth() {
+
         return this.width;
     }
 
     @Override
     public int getHeight() {
+
         return this.height;
     }
 

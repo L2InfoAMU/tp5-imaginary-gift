@@ -1,13 +1,16 @@
 package viewer;
 
-import image.*;
+import image.Image;
+import image.ImageFactory;
+import image.RasterImageType;
+import image.RasterUniformImageFactory;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.PixelWriter;
-import javafx.scene.paint.Color;
+import org.codehaus.plexus.personality.plexus.lifecycle.phase.Initializable;
+import org.codehaus.plexus.personality.plexus.lifecycle.phase.InitializationException;
 
+import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -15,6 +18,7 @@ import java.util.ResourceBundle;
  * Created by Arnaud Labourel on 04/10/2018.
  */
 public class Display implements Initializable {
+    @javafx.fxml.FXML
     @FXML
     private Canvas canvas;
 
@@ -25,7 +29,8 @@ public class Display implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         // TODO : rajouter la création d'une fabrique d'image pour initialiser imageFactory
-
+        imageFactory = new RasterUniformImageFactory(200,
+                200, Color.RED, RasterImageType.BRUTE);
         this.image = imageFactory.makeImage();
 
         render();
@@ -52,4 +57,8 @@ public class Display implements Initializable {
         pixelWriter.setColor(x, y, image.getPixelColor(x, y));
     }
 
+    @Override
+    public void initialize() throws InitializationException {
+
+    }
 }

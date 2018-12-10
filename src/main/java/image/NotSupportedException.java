@@ -1,13 +1,10 @@
 package image;
 
-public class NotSupportedException extends RuntimeException{
-    private String message ;
+public class NotSupportedException extends RuntimeException {
 
-    public NotSupportedException(String message){
-        this.message = message ;
+    NotSupportedException(String message){
+        super(message);
     }
 
-    public String getMessage(){
-        return "Error " + message ;
-    }
+
 }

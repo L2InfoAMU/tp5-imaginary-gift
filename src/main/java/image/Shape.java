@@ -1,6 +1,5 @@
 package image;
 
-
 import java.awt.*;
 
 public interface Shape {
